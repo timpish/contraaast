@@ -1,2 +1,2 @@
 # CONRAAAST
-A little too fun, AAA color-pair confabulator
+Color contrast confabulator

@@ -1,2 +1,2 @@
 # CONRAAAST
-Color contrast confabulator
+Color Contrast Confabulator

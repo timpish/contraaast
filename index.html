@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+inline CSS
+QA/A11y/WV
+ship it!
+---
+Xsubset fonts (API)
+X320!!!!! sizes/space scales
+Xremove inline styles
+Xbuttons IxD
+Xicons
+Xanimations
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONTRAAAST…A little too fun, AAA color-pair confabulator.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,wght,CASL,CRSV,MONO@-15..0,300..860,0..1,0..1,0..1&display=swap" rel="stylesheet">
+    <!-- <link href="contraaast.css" rel="stylesheet"> -->
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            text-size-adjust: none;
+            -moz-text-size-adjust: none;
+            -webkit-text-size-adjust: none;
+        }
+
+        body,
+        p,
+        h1,
+        h2 {
+            margin-block-end: 0;
+        }
+
+        h1,
+        h2,
+        button,
+        input {
+            line-height: 1.1;
+        }
+
+        a,
+        button,
+        input,
+        textarea {
+            color: inherit;
+            background-color: inherit;
+            font: inherit;
+        }
+
+        a:not([class]) {
+            color: currentColor;
+            text-decoration-skip-ink: auto;
+        }
+
+        article>a {
+            text-decoration: none;
+        }
+
+        :where(html) {
+            --_contraaast-fontFamily-body: var(--contraaast-fontFamily-body, Recursive, Dank Mono, Operator Mono, Inconsolata, Fira Mono, Monaco, ui-monospace, SF Mono, Droid Sans Mono, Source Code Pro, monospace);
+            font-family: var(--_contraaast-fontFamily-body);
+            --_contraaast-fontSize-xs: var(--contraaast-fontSize-xs, clamp(0.6688rem, 0.6008rem + 0.3398vw, 0.8875rem));
+            --_contraaast-fontSize-s: var(--contraaast-fontSize-s, clamp(0.9688rem, 0.6095rem + 1.7961vw, 2.125rem));
+            --_contraaast-fontSize-m: var(--contraaast-fontSize-m, clamp(1.875rem, 1.6808rem + 0.9709vw, 2.5rem));
+            --_contraaast-fontSize-l: var(--contraaast-fontSize-l, clamp(1.75rem, 1.3617rem + 1.9417vw, 3rem));
+            --_contraaast-fontSize-xl: var(--contraaast-fontSize-xl, clamp(1.5rem, 0.1019rem + 6.9903vw, 6rem));
+            --_contraaast-maxInlineSize-textMeasure: var(--contraaast-maxInlineSize-textMeasure, 145ch);
+            --_contraaast-space-xs-s: var(--contraaast-space-xs-s, clamp(0.45rem, 0.7121rem + -0.3107vw, 0.65rem));
+            --_contraaast-space-2xs-xl: var(--contraaast-space-2xs-xl, clamp(0.31rem, 0.018rem + 1.4602vw, 1.25rem));
+            --_contraaast-space-m-xl: var(--contraaast-space-m-xl, clamp(0.75rem, 0.5947rem + 0.7767vw, 1.25rem));
+            --_contraaast-space-m-2xl: var(--contraaast-space-m-2xl, clamp(0.75rem, 0.517rem + 1.165vw, 1.5rem));
+            --_contraaast-space-l-3xl: var(--contraaast-space-l-3xl, clamp(1rem, 0.6893rem + 1.5534vw, 2rem));
+            --_contraaast-easing-easeInOut: var(--contraaast-easing-easeInOut, cubic-bezier(.5, 0, .5, 1));
+            --_contraaast-easing-ease: var(--contraaast-easing-ease, cubic-bezier(.25, 0, .3, 1));
+            --_contraaast-animation-beat: var(--contraaast-animation-beat, beat .7s var(--_contraaast-easing-easeInOut) infinite);
+            --_contraaast-animation-fadeIn: var(--contraaast-animation-fadeIn, fade-in .5s var(--_contraaast-easing-ease));
+        }
+
+        body,
+        header,
+        button,
+        footer p {
+            border-radius: 1rem;
+        }
+
+        body {
+            display: grid;
+            grid-template-areas:
+                'header header'
+                'intro intro'
+                'output output'
+                'invert copy'
+                'execute execute'
+                'footer footer'
+            ;
+            gap: var(--_contraaast-space-2xs-xl);
+            grid-template-rows: auto auto auto 2fr 3fr 1fr;
+            line-height: 1.5;
+            min-height: 95vh;
+            margin-top: 0.69rem;
+            padding-top: var(--_contraaast-space-m-xl);
+            padding-bottom: 0.25rem;
+            outline: currentColor double var(--_contraaast-space-l-3xl);
+        }
+
+        header {
+            grid-area: header;
+            border-right: var(--_contraaast-space-l-3xl) dotted currentColor;
+        }
+
+        h1 {
+            font-size: var(--_contraaast-fontSize-m);
+            --mono: "MONO" 1;
+            --casl: "CASL" 1;
+            --wght: "wght" 430;
+            font-variation-settings: var(--mono), var(--casl), var(--wght);
+            margin-top: .25rem;
+            margin-bottom: calc(var(--_contraaast-space-xs-s) * (-1.0));
+        }
+
+        h1>span {
+            --casl: "CASL" 0;
+            --wght: "wght" 860;
+            font-variation-settings: var(--casl), var(--wght);
+            opacity: 0.30;
+            transition: opacity 0.2s var(--_contraaast-easing-easeInOut);
+        }
+
+        h1+em {
+            font-size: var(--_contraaast-fontSize-xs);
+            --mono: "MONO" 1;
+            --wght: "wght" 600;
+            font-variation-settings: var(--mono), var(--wght);
+        }
+
+        /* logo layout wrapper and effects */
+        article {
+            text-align: center;
+            width: fit-content;
+        }
+
+        article:hover h1 span {
+            opacity: 1;
+        }
+
+        article h1 i {
+            font-style: normal;
+            opacity: 1;
+            transition: opacity 0.2s var(--_contraaast-easing-easeInOut);
+        }
+
+        article:hover h1 i {
+            opacity: 0.30;
+        }
+
+        /* end logo layout wrapper and effects */
+
+        p {
+            grid-area: intro;
+            font-size: 2.15rem;
+            font-size: var(--_contraaast-fontSize-s);
+        }
+
+        h2 {
+            grid-area: output;
+            font-size: var(--_contraaast-fontSize-xl);
+            white-space: nowrap;
+            margin: 2.0rem 0;
+            text-align: center;
+            --mono: "MONO" 1;
+            --wght: "wght" 300;
+            font-variation-settings: var(--mono), var(--wght);
+        }
+
+        h2 span {
+            --wght: "wght" 600;
+            font-variation-settings: var(--wght);
+        }
+
+        #run {
+            grid-area: execute;
+        }
+
+        #invert {
+            grid-area: invert;
+        }
+
+        #copy {
+            grid-area: copy;
+        }
+
+        #ratio {
+            margin-left: 0.25ch;
+        }
+
+        input {
+            border: none;
+            border-radius: .33rem;
+            text-align: center;
+            width: 15.5ch;
+            overflow: visible;
+        }
+
+        button {
+            border-width: 0.3rem;
+            cursor: pointer;
+            font-size: 3.0rem;
+            font-size: var(--_contraaast-fontSize-l);
+            --mono: "MONO" 0;
+            --casl: "CASL" .5;
+            --wght: "wght" 600;
+            --CRSV: "CRSV" 1;
+            font-variation-settings: var(--mono), var(--casl), var(--wght), var(--CRSV);
+        }
+
+        button:active,
+        button:focus,
+        input:active,
+        input:focus {
+            outline: currentColor dotted 3px;
+            outline-offset: 1px;
+        }
+
+        footer {
+            grid-area: footer;
+            align-self: center;
+        }
+
+        footer p {
+            border-left: var(--_contraaast-space-l-3xl) dotted currentColor;
+            font-size: var(--_contraaast-fontSize-xs);
+            margin: 0;
+            text-align: right;
+        }
+
+        abbr {
+            --wght: "wght" 550;
+            font-variation-settings: var(--wght);
+            font-variant-caps: all-small-caps;
+            letter-spacing: 0.02em;
+            text-decoration-line: underline;
+            text-decoration-style: dotted;
+            text-decoration-color: currentColor;
+            text-decoration-thickness: 0.06em;
+        }
+
+        em {
+            --slnt: "slnt" -15;
+            font-variation-settings: var(--slnt);
+        }
+
+        .center {
+            box-sizing: content-box;
+            margin-inline: auto;
+            max-inline-size: var(--_contraaast-maxInlineSize-textMeasure);
+            padding-inline-start: var(--_contraaast-space-l-3xl);
+            padding-inline-end: var(--_contraaast-space-l-3xl);
+        }
+
+        .icon {
+            height: 0.75em;
+            height: 1cap;
+            width: 0.75em;
+            width: 1cap;
+            opacity: 0.5;
+        }
+
+        .with-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .with-icon .icon {
+            margin-inline-end: var(--_contraaast-space-m-2xl);
+        }
+
+        @keyframes beat {
+            50% {
+                transform: scale(1.1, 1.1)
+            }
+        }
+
+        @keyframes fade-in {
+            to {
+                opacity: 1.0
+            }
+        }
+
+        button:hover .icon {
+            animation: var(--_contraaast-animation-beat), var(--_contraaast-animation-fadeIn) forwards;
+        }
+
+        * {
+            /* debugger */
+            outline: currentColor dotted 0.5px;
+        }
+    </style>
+</head>
+
+<body class="center" onload="generateColors()">
+    <!-- layout -->
+    <header>
+        <article>
+            <a href="https://contraaast.timpish.com">
+                <h1><span>CONTR</span><i>AAA</i><span>ST</span></h1>
+                <em>High contrast color engine</em>
+            </a>
+        </article>
+    </header>
+
+    <p>Generate random color-pairs compliant with <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-enhanced.html" target="_blank">Success Criterion 1.4.6</a>, <em>i.e.</em>, the figure &harr; ground color contrast ratio is &#8805;7:1.</p>
+
+    <h2><input id="output"></input>&equals;<span id="ratio"></span></h2>
+
+    <button id="invert" class="with-icon" tabindex="2">
+        <svg class="icon">
+            <use href="#swap"></use>
+        </svg>
+        Invert
+    </button>
+
+    <button id="copy" class="with-icon" tabindex="3">
+        <svg class="icon">
+            <use href="#get"></use>
+        </svg>
+        Get
+    </button>
+
+    <button id="run" class="with-icon" tabindex="1">
+        <svg class="icon">
+            <use href="#color"></use>
+        </svg>
+        Color Me
+    </button>
+
+    <footer>
+        <p>&copy;
+            <script>document.write((new Date).getFullYear())</script><noscript>2023</noscript> Timothy Martens
+        </p>
+    </footer>
+
+    <!-- icons -->
+    <svg display="none" aria-hidden=”true” width="0" height="0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <symbol id="swap" viewBox="0 0 10 10" fill="currentColor">
+            <path d="M10 .833V6.25a.833.833 0 0 1-.833.833H3.506l.539.539a.417.417 0 0 1-.59.59l-1.25-1.25a.417.417 0 0 1 0-.59l1.25-1.25a.417.417 0 0 1 .59.59l-.54.538h5.662V.833H3.333v.417a.417.417 0 1 1-.833 0V.833A.833.833 0 0 1 3.333 0h5.834A.833.833 0 0 1 10 .833zm-2.917 7.5a.417.417 0 0 0-.416.417v.417H.833V3.75h5.661l-.539.539a.417.417 0 1 0 .59.59l1.25-1.25a.417.417 0 0 0 0-.59l-1.25-1.25a.417.417 0 1 0-.59.59l.54.538H.832A.833.833 0 0 0 0 3.75v5.417A.833.833 0 0 0 .833 10h5.834a.833.833 0 0 0 .833-.833V8.75a.417.417 0 0 0-.417-.417z" />
+        </symbol>
+        <symbol id="get" viewBox="0 0 10 10" fill="currentColor">
+            <path d="M9.583 0H2.917A.417.417 0 0 0 2.5.417V2.5H.417A.417.417 0 0 0 0 2.917v6.666A.417.417 0 0 0 .417 10h6.666a.417.417 0 0 0 .417-.417V7.5h2.083A.417.417 0 0 0 10 7.083V.417A.417.417 0 0 0 9.583 0zM6.667 9.167H.833V3.333h5.834zm2.5-2.5H7.5v-3.75a.417.417 0 0 0-.417-.417h-3.75V.833h5.834z" />
+        </symbol>
+        <symbol id="color" viewBox="0 0 10 10" fill="currentColor">
+            <path d="M8.498 1.63A4.965 4.965 0 0 0 5 .193h-.052a5 5 0 0 0-4.948 5c0 2.067 1.278 3.8 3.335 4.527a1.538 1.538 0 0 0 2.05-1.45.77.77 0 0 1 .769-.77h2.221a1.53 1.53 0 0 0 1.5-1.196 5.019 5.019 0 0 0-.273-3.065 4.965 4.965 0 0 0-1.104-1.61zm.625 4.505a.764.764 0 0 1-.748.596H6.154a1.538 1.538 0 0 0-1.539 1.538.769.769 0 0 1-1.024.725C1.85 8.38.769 6.924.769 5.193A4.23 4.23 0 0 1 4.956.962H5A4.248 4.248 0 0 1 9.23 5.156c.003.33-.032.658-.105.979zM5.577 2.693a.577.577 0 1 1-1.154 0 .577.577 0 0 1 1.154 0zM3.46 3.846a.577.577 0 1 1-1.153 0 .577.577 0 0 1 1.153 0zm0 2.693a.577.577 0 1 1-1.153 0 .577.577 0 0 1 1.153 0zm4.231-2.693a.577.577 0 1 1-1.154 0 .577.577 0 0 1 1.154 0z" />
+        </symbol>
+    </svg>
+
+    <!-- logic -->
+    <script>
+        function generateColors() {
+            // Generate a random color in hexadecimal format
+            function getRandomColor() {
+                const letters = "0123456789ABCDEF";
+                let color = "#";
+                for (let i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+
+            // Calculate the WCAG contrast ratio between two colors
+            function calculateContrastRatio(color1, color2) {
+                // Convert color strings to RGB values
+                function hexToRgb(hex) {
+                    const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+                    hex = hex.replace(shorthandRegex, function (m, r, g, b) {
+                        return r + r + g + g + b + b;
+                    });
+
+                    const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+                    return result
+                        ? {
+                            r: parseInt(result[1], 16),
+                            g: parseInt(result[2], 16),
+                            b: parseInt(result[3], 16),
+                        }
+                        : null;
+                }
+
+                // Calculate the relative luminance of a color
+                function calculateRelativeLuminance(color) {
+                    const { r, g, b } = color;
+                    const sRGB = [r / 255, g / 255, b / 255];
+
+                    for (let i = 0; i < sRGB.length; i++) {
+                        if (sRGB[i] <= 0.03928) {
+                            sRGB[i] = sRGB[i] / 12.92;
+                        } else {
+                            sRGB[i] = Math.pow((sRGB[i] + 0.055) / 1.055, 2.4);
+                        }
+                    }
+
+                    const luminance = 0.2126 * sRGB[0] + 0.7152 * sRGB[1] + 0.0722 * sRGB[2];
+                    return luminance;
+                }
+
+                // Calculate the contrast ratio between two relative luminance values
+                function calculateContrast(luminance1, luminance2) {
+                    const lighter = Math.max(luminance1, luminance2);
+                    const darker = Math.min(luminance1, luminance2);
+                    const contrast = (lighter + 0.05) / (darker + 0.05);
+                    return contrast;
+                }
+
+                const rgbColor1 = hexToRgb(color1);
+                const rgbColor2 = hexToRgb(color2);
+
+                const luminance1 = calculateRelativeLuminance(rgbColor1);
+                const luminance2 = calculateRelativeLuminance(rgbColor2);
+
+                const contrastRatio = calculateContrast(luminance1, luminance2);
+                return contrastRatio;
+            }
+
+            // Get HTML elements
+            const body = document.querySelector("body");
+            const ratioOutputEl = document.getElementById("ratio");
+            const colorOutputEl = document.getElementById("output");
+
+            // Generate two random colors
+            let color1 = getRandomColor();
+            let color2 = getRandomColor();
+
+            // Calculate the contrast ratio between the two colors
+            const contrastRatio = calculateContrastRatio(color1, color2);
+
+            // Check if the contrast ratio is equal to or greater than 7
+            if (contrastRatio >= 7) {
+                // Apply colors to the body
+                body.style.color = color1;
+                body.style.backgroundColor = color2;
+
+                // Output contrast ratio to the span element
+                if (contrastRatio > 7) {
+                    ratioOutputEl.textContent = `${contrastRatio.toFixed(1)}`;
+                }
+
+                // Output colors to the input element
+                colorOutputEl.value = `${color1}\u2236${color2}`;
+                //colorOutputEl.value = `${color1}\n${color2}`;
+            } else {
+                // If the contrast ratio is less than 7, generate new colors recursively
+                generateColors();
+            }
+        }
+
+        // Switch the background color and text color of the HTML body and update the output
+        function switchColors() {
+            const body = document.querySelector("body");
+            const colorOutputEl = document.getElementById("output");
+
+            // Get the current background color and text color
+            const backgroundColor = body.style.backgroundColor;
+            const textColor = body.style.color;
+
+            // Switch the colors
+            body.style.backgroundColor = textColor;
+            body.style.color = backgroundColor;
+
+            // Convert RGB string val to hex
+            function RGBstr2Hex(rgbstr) {
+
+                function componentToHex(c) {
+                    hex = c.toString(16).toUpperCase();
+                    return hex.length == 1 ? "0" + hex : hex;
+                }
+
+                rgb = rgbstr.replace(/[^\d,]/g, '').split(',');
+                r = parseInt(rgb[0]);
+                g = parseInt(rgb[1]);
+                b = parseInt(rgb[2]);
+
+                return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+            }
+
+            cc1 = RGBstr2Hex(backgroundColor)
+            cc2 = RGBstr2Hex(textColor)
+
+            // Update the output textarea with the switched values
+            colorOutputEl.value = `${cc1}\u2236${cc2}`;
+            //colorOutputEl.value = `${cc1}\n${cc2}`;
+        }
+
+        // Copy the values of the output textarea to the clipboard
+        function copyToClipboard() {
+            const colorOutputEl = document.getElementById("output");
+
+            // Select the text in the output textarea
+            colorOutputEl.select();
+            colorOutputEl.setSelectionRange(0, 99999); // For mobile devices
+
+            // Copy the selected text to the clipboard
+            document.execCommand("copy");
+
+            // Deselect the text
+            window.getSelection().removeAllRanges();
+        }
+
+        // Event listeners
+        const invert = document.getElementById("invert");
+        const copy = document.getElementById("copy");
+        const run = document.getElementById("run");
+        invert.addEventListener("click", switchColors);
+        copy.addEventListener("click", copyToClipboard);
+        run.addEventListener("click", generateColors);
+    </script>
+
+</body>
+
+</html>

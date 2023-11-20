@@ -1,17 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<!--
-inline CSS
-QA/A11y/WV
-ship it!
----
-Xsubset fonts (API)
-X320!!!!! sizes/space scales
-Xremove inline styles
-Xbuttons IxD
-Xicons
-Xanimations
--->
 
 <head>
     <meta charset="UTF-8">
@@ -301,7 +289,7 @@ Xanimations
             animation: var(--_contraaast-animation-beat), var(--_contraaast-animation-fadeIn) forwards;
         }
 
-        * {
+        .* {
             /* debugger */
             outline: currentColor dotted 0.5px;
         }
@@ -323,14 +311,14 @@ Xanimations
 
     <h2><input id="output" aria-label="output"></input>&equals;<span id="ratio"></span></h2>
 
-    <button id="invert" class="with-icon" tabindex="1">
+    <button id="invert" class="with-icon">
         <svg class="icon">
             <use href="#swap"></use>
         </svg>
         Invert
     </button>
 
-    <button id="copy" class="with-icon" tabindex="2">
+    <button id="copy" class="with-icon">
         <svg class="icon">
             <use href="#get"></use>
         </svg>

@@ -1,2 +1,2 @@
-# CONRAAAST
+# CONTRAAAST
 Color Contrast Confabulator

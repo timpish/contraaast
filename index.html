@@ -60,7 +60,7 @@ Xdialog bg
             --_contraaast-fontSize-xs: var(--contraaast-fontSize-xs, clamp(0.6688rem, 0.6008rem + 0.3398vw, 0.8875rem));
             --_contraaast-fontSize-s: var(--contraaast-fontSize-s, clamp(1.125rem, 0.8143rem + 1.5534vw, 2.125rem));
             --_contraaast-fontSize-m: var(--contraaast-fontSize-m, clamp(1.875rem, 1.6808rem + 0.9709vw, 2.5rem));
-            --_contraaast-fontSize-l: var(--contraaast-fontSize-l, clamp(1.75rem, 1.3617rem + 1.9417vw, 3rem));
+            --_contraaast-fontSize-l: var(--contraaast-fontSize-l, clamp(1.5rem, 1.034rem + 2.3301vw, 3rem));
             --_contraaast-fontSize-xl: var(--contraaast-fontSize-xl, clamp(2.0625rem, 1.0528rem + 5.0485vw, 5.3125rem));
             --_contraaast-fontSize-xxl: var(--contraaast-fontSize-xxl, clamp(9.1875rem, 4.5856rem + 23.0097vw, 24rem));
 
@@ -202,17 +202,6 @@ Xdialog bg
             text-align: center;
         }
 
-        /* colors output */
-        h2 {
-            font-size: var(--_contraaast-fontSize-xl);
-            font-size: 30px;
-            --mono: "MONO" 1;
-            --wght: "wght" 300;
-            font-variation-settings: var(--mono), var(--wght);
-            margin: 0;
-            vertical-align: baseline;
-        }
-
         input {
             border: none;
             border-radius: 1.0rem;
@@ -226,10 +215,21 @@ Xdialog bg
             outline-offset: -0.3rem;
         }
 
+        /* colors output */
+        h2 {
+            font-size: var(--_contraaast-fontSize-xl);
+            font-size: 30px;
+            --mono: "MONO" 1;
+            --wght: "wght" 300;
+            font-variation-settings: var(--mono), var(--wght);
+            margin: 0;
+            vertical-align: baseline;
+        }
+
         /* ratio output */
         h3 {
             font-size: var(--_contraaast-fontSize-xxl);
-            font-size: 120px;
+            font-size: 130px;
             line-height: 0.90;
             margin: 0;
         }
@@ -240,7 +240,6 @@ Xdialog bg
             border-radius: 1.0rem;
             cursor: pointer;
             font-size: var(--_contraaast-fontSize-l);
-            font-size: 26px;
             --mono: "MONO" 0;
             --casl: "CASL" .5;
             --wght: "wght" 600;

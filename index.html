@@ -1,5 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--
+CWV
+deploy
+---
+Xmobile text
+Xmobile whitespace
+Xposthog?
+Xmodal elevation
+Xrefactor
+Xrefactor motions?
+Xpull inline
+Xbutton focus/border/no ani
+Xdialog type/space
+Xdialog bg
+-->
 
 <head>
     <meta charset="UTF-8">
@@ -10,10 +25,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Recursive:slnt,wght,CASL,CRSV,MONO@-15..0,300..860,0..1,0..1,0..1&display=swap" rel="stylesheet">
     <meta name="description" content="CONTRAAAST…A little too fun, AAA color-pair generator.">
     <style>
+        /* reset/baseline */
         *,
         *::before,
         *::after {
             box-sizing: border-box;
+            background-color: inherit;
+            color: inherit;
         }
 
         html {
@@ -22,26 +40,9 @@
             -webkit-text-size-adjust: none;
         }
 
-        body,
-        p,
-        h1,
-        h2 {
-            margin-block-end: 0;
-        }
-
-        h1,
-        h2,
-        button,
-        input {
-            line-height: 1.1;
-        }
-
         a,
         button,
-        input,
-        textarea {
-            color: inherit;
-            background-color: inherit;
+        input {
             font: inherit;
         }
 
@@ -50,133 +51,80 @@
             text-decoration-skip-ink: auto;
         }
 
-        article>a {
-            text-decoration: none;
-        }
-
+        /* globals */
         :where(html) {
+
             --_contraaast-fontFamily-body: var(--contraaast-fontFamily-body, Recursive, Dank Mono, Operator Mono, Inconsolata, Fira Mono, Monaco, ui-monospace, SF Mono, Droid Sans Mono, Source Code Pro, monospace);
             font-family: var(--_contraaast-fontFamily-body);
+
             --_contraaast-fontSize-xs: var(--contraaast-fontSize-xs, clamp(0.6688rem, 0.6008rem + 0.3398vw, 0.8875rem));
-            --_contraaast-fontSize-s: var(--contraaast-fontSize-s, clamp(0.9688rem, 0.6095rem + 1.7961vw, 2.125rem));
+            --_contraaast-fontSize-s: var(--contraaast-fontSize-s, clamp(1.125rem, 0.8143rem + 1.5534vw, 2.125rem));
             --_contraaast-fontSize-m: var(--contraaast-fontSize-m, clamp(1.875rem, 1.6808rem + 0.9709vw, 2.5rem));
             --_contraaast-fontSize-l: var(--contraaast-fontSize-l, clamp(1.75rem, 1.3617rem + 1.9417vw, 3rem));
-            --_contraaast-fontSize-xl: var(--contraaast-fontSize-xl, clamp(1.5rem, 0.1019rem + 6.9903vw, 6rem));
-            --_contraaast-maxInlineSize-textMeasure: var(--contraaast-maxInlineSize-textMeasure, 145ch);
-            --_contraaast-space-xs-s: var(--contraaast-space-xs-s, clamp(0.45rem, 0.7121rem + -0.3107vw, 0.65rem));
+            --_contraaast-fontSize-xl: var(--contraaast-fontSize-xl, clamp(2.0625rem, 1.0528rem + 5.0485vw, 5.3125rem));
+            --_contraaast-fontSize-xxl: var(--contraaast-fontSize-xxl, clamp(9.1875rem, 4.5856rem + 23.0097vw, 24rem));
+
             --_contraaast-space-2xs-xl: var(--contraaast-space-2xs-xl, clamp(0.31rem, 0.018rem + 1.4602vw, 1.25rem));
+            --_contraaast-space-xs-s: var(--contraaast-space-xs-s, clamp(0.45rem, 0.7121rem + -0.3107vw, 0.65rem));
+            --_contraaast-space-s-xl: var(--contraaast-space-s-xl, clamp(0.65rem, 0.4636rem + 0.932vw, 1.25rem));
             --_contraaast-space-m-xl: var(--contraaast-space-m-xl, clamp(0.75rem, 0.5947rem + 0.7767vw, 1.25rem));
             --_contraaast-space-m-2xl: var(--contraaast-space-m-2xl, clamp(0.75rem, 0.517rem + 1.165vw, 1.5rem));
             --_contraaast-space-l-3xl: var(--contraaast-space-l-3xl, clamp(1rem, 0.6893rem + 1.5534vw, 2rem));
-            --_contraaast-easing-easeInOut: var(--contraaast-easing-easeInOut, cubic-bezier(.5, 0, .5, 1));
-            --_contraaast-easing-ease: var(--contraaast-easing-ease, cubic-bezier(.25, 0, .3, 1));
-            --_contraaast-animation-beat: var(--contraaast-animation-beat, beat .7s var(--_contraaast-easing-easeInOut) infinite);
-            --_contraaast-animation-fadeIn: var(--contraaast-animation-fadeIn, fade-in .5s var(--_contraaast-easing-ease));
+
+            --_contraaast-easing-ease: var(--contraaast-easing-ease, cubic-bezier(0.25, 0, 0.3, 1.0));
+            --_contraaast-easing-easeOut: var(--contraaast-easing-easeOut, cubic-bezier(0, 0, .62, 1));
+            --_contraaast-easing-easeInOut: var(--contraaast-easing-easeInOut, cubic-bezier(0.5, 0, 0.5, 1.0));
+            --_contraaast-motion-beat: var(--contraaast-motion-beat, beat 0.70s var(--_contraaast-easing-easeInOut) infinite);
+            --_contraaast-motion-fadeUp: var(--contraaast-motion-fadeUp, fade-up 0.50s var(--_contraaast-easing-ease));
+            --_contraaast-motion-fadeIn: var(--contraaast-motion-fadeIn, fade-in 0.34s var(--_contraaast-easing-easeOut));
+            --_contraaast-motion-backgroundFadeIn: var(--contraaast-motion-backgroundFadeIn, bg-fade-in 0.34s var(--_contraaast-easing-easeOut) forwards);
+
+            /* values from https://open-props.style 🤘 */
+            --_contraaast-elevation-color: var(--contraaast-elevation-color, 220 3% 15%);
+            --_contraaast-elevation-strength: var(--contraaast-elevation-strength, 1%);
+            --_contraaast-elevation-altitude:
+                0 -1px 2px 0 hsl(var(--_contraaast-elevation-color) / calc(var(--_contraaast-elevation-strength) + 2%)),
+                0 2px 1px -2px hsl(var(--_contraaast-elevation-color) / calc(var(--_contraaast-elevation-strength) + 3%)),
+                0 5px 5px -2px hsl(var(--_contraaast-elevation-color) / calc(var(--_contraaast-elevation-strength) + 3%)),
+                0 10px 10px -2px hsl(var(--_contraaast-elevation-color) / calc(var(--_contraaast-elevation-strength) + 4%)),
+                0 20px 20px -2px hsl(var(--_contraaast-elevation-color) / calc(var(--_contraaast-elevation-strength) + 5%)),
+                0 40px 40px -2px hsl(var(--_contraaast-elevation-color) / calc(var(--_contraaast-elevation-strength) + 7%));
         }
 
-        body,
-        header,
-        button,
-        footer p {
-            border-radius: 1rem;
-        }
 
+        /* layout */
         body {
+            border-top: var(--_contraaast-space-s-xl) dashed currentColor;
+            border-bottom: var(--_contraaast-space-s-xl) dashed currentColor;
             display: grid;
             grid-template-areas:
                 'header header'
-                'intro intro'
                 'output output'
                 'invert copy'
                 'execute execute'
-                'footer footer'
-            ;
+                'footer footer';
+            grid-template-rows: min-content 2.0fr 0.5fr 1.0fr min-content;
             gap: var(--_contraaast-space-2xs-xl);
-            grid-template-rows: auto auto auto 2fr 3fr 1fr;
             line-height: 1.5;
-            min-height: 95vh;
-            margin-top: 0.69rem;
-            padding-top: var(--_contraaast-space-m-xl);
-            padding-bottom: 0.25rem;
-            /*outline: currentColor double var(--_contraaast-space-l-3xl); */
+            margin: 0;
+            min-height: 100vh;
+            padding: var(--_contraaast-space-s-xl) var(--_contraaast-space-2xs-xl);
+        }
+
+        @media screen and (min-width: 450px) {
+            body {
+                grid-template-rows: min-content auto 1.0fr 1.5fr min-content;
+
+            }
         }
 
         header {
             grid-area: header;
-            border-right: var(--_contraaast-space-l-3xl) dotted currentColor;
         }
 
-        h1 {
-            font-size: var(--_contraaast-fontSize-m);
-            --mono: "MONO" 1;
-            --casl: "CASL" 1;
-            --wght: "wght" 430;
-            font-variation-settings: var(--mono), var(--casl), var(--wght);
-            margin-top: .25rem;
-            margin-bottom: calc(var(--_contraaast-space-xs-s) * (-1.0));
-        }
-
-        h1>span {
-            --casl: "CASL" 0;
-            --wght: "wght" 860;
-            font-variation-settings: var(--casl), var(--wght);
-            opacity: 0.30;
-            transition: opacity 0.2s var(--_contraaast-easing-easeInOut);
-        }
-
-        h1+em {
-            font-size: var(--_contraaast-fontSize-xs);
-            --mono: "MONO" 1;
-            --wght: "wght" 600;
-            font-variation-settings: var(--mono), var(--wght);
-        }
-
-        /* logo layout wrapper and effects */
-        article {
-            text-align: center;
-            width: fit-content;
-        }
-
-        article:hover h1 span {
-            opacity: 1;
-        }
-
-        article h1 i {
-            font-style: normal;
-            opacity: 1;
-            transition: opacity 0.2s var(--_contraaast-easing-easeInOut);
-        }
-
-        article:hover h1 i {
-            opacity: 0.30;
-        }
-
-        /* end logo layout wrapper and effects */
-
-        p {
-            grid-area: intro;
-            font-size: 2.15rem;
-            font-size: var(--_contraaast-fontSize-s);
-        }
-
-        h2 {
+        output {
             grid-area: output;
-            font-size: var(--_contraaast-fontSize-xl);
-            white-space: nowrap;
-            margin: 2.0rem 0;
-            text-align: center;
-            --mono: "MONO" 1;
-            --wght: "wght" 300;
-            font-variation-settings: var(--mono), var(--wght);
-        }
-
-        h2 span {
-            --wght: "wght" 600;
-            font-variation-settings: var(--wght);
-        }
-
-        #run {
-            grid-area: execute;
+            align-self: center;
         }
 
         #invert {
@@ -187,20 +135,107 @@
             grid-area: copy;
         }
 
-        #ratio {
-            margin-left: 0.25ch;
+        #run {
+            grid-area: execute;
+        }
+
+        footer {
+            grid-area: footer;
+        }
+
+        /* elements */
+        /* logo/header layout, wrapper, and effects */
+        h1 {
+            font-size: var(--_contraaast-fontSize-m);
+            --mono: "MONO" 1;
+            --casl: "CASL" 1;
+            --wght: "wght" 430;
+            font-variation-settings: var(--mono), var(--casl), var(--wght);
+            line-height: 1.1;
+            margin-top: 0;
+            margin-bottom: calc(var(--_contraaast-space-xs-s) * (-1.0));
+        }
+
+        h1>span {
+            --casl: "CASL" 0;
+            --wght: "wght" 860;
+            font-variation-settings: var(--casl), var(--wght);
+            opacity: 1.0;
+            transition: opacity 0.27s var(--_contraaast-easing-easeInOut);
+        }
+
+        h1+em {
+            font-size: var(--_contraaast-fontSize-xs);
+            --mono: "MONO" 1;
+            --wght: "wght" 600;
+            font-variation-settings: var(--mono), var(--wght);
+        }
+
+        header>article {
+            text-align: center;
+            width: fit-content;
+        }
+
+        article>a {
+            background-color: transparent;
+            text-decoration: none;
+        }
+
+        article:hover h1 span {
+            opacity: 0.4;
+        }
+
+        article h1 i {
+            font-style: normal;
+            opacity: 0.4;
+            transition: opacity 0.27s var(--_contraaast-easing-easeInOut);
+        }
+
+        article:hover h1 i {
+            opacity: 1.0;
+        }
+
+        /* end logo layout wrapper and effects */
+
+        /* output */
+        output {
+            text-align: center;
+        }
+
+        /* colors output */
+        h2 {
+            font-size: var(--_contraaast-fontSize-xl);
+            --mono: "MONO" 1;
+            --wght: "wght" 300;
+            font-variation-settings: var(--mono), var(--wght);
+            margin: 0;
+            vertical-align: baseline;
         }
 
         input {
             border: none;
-            border-radius: .33rem;
+            border-radius: 1.0rem;
             text-align: center;
-            width: 15.5ch;
-            overflow: visible;
+            width: 100%;
+            line-height: 1.0;
         }
 
+        input:active,
+        input:focus {
+            outline-offset: -0.3rem;
+        }
+
+        /* ratio output */
+        h3 {
+            font-size: var(--_contraaast-fontSize-xxl);
+            line-height: 0.90;
+            margin: 0;
+        }
+
+        /* function inputs */
         button {
-            border-width: 0.3rem;
+            border: 0.30rem dotted currentColor;
+            border-radius: 1.0rem;
             cursor: pointer;
             font-size: var(--_contraaast-fontSize-l);
             --mono: "MONO" 0;
@@ -210,24 +245,25 @@
             font-variation-settings: var(--mono), var(--casl), var(--wght), var(--CRSV);
         }
 
+        button:hover .icon {
+            animation: var(--_contraaast-motion-beat), var(--_contraaast-motion-fadeUp) forwards;
+        }
+
         button:active,
         button:focus,
         input:active,
         input:focus {
-            outline: currentColor dotted 3px;
-            outline-offset: 1px;
+            outline: currentColor dotted 0.30rem;
         }
 
-        footer {
-            grid-area: footer;
-            align-self: center;
+        button:active,
+        button:focus {
+            outline-offset: -0.80rem;
         }
+
 
         footer p {
-            border-left: var(--_contraaast-space-l-3xl) dotted currentColor;
             font-size: var(--_contraaast-fontSize-xs);
-            margin: 0;
-            text-align: right;
         }
 
         abbr {
@@ -246,19 +282,36 @@
             font-variation-settings: var(--slnt);
         }
 
-        .center {
-            box-sizing: content-box;
-            margin-inline: auto;
-            max-inline-size: var(--_contraaast-maxInlineSize-textMeasure);
-            padding-inline-start: var(--_contraaast-space-l-3xl);
-            padding-inline-end: var(--_contraaast-space-l-3xl);
+        /* layout primitives */
+        .spread {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+
+        .rhythm {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        [class^='rhythm']>* {
+            margin-block: 0;
+        }
+
+        .rhythm-m>*+* {
+            margin-block-start: var(--_cv-space-xl);
+            margin-block-start: 1.0rem;
         }
 
         .icon {
             height: 0.75em;
-            height: 1cap;
+            height: 1.0cap;
             width: 0.75em;
-            width: 1cap;
+            width: 1.0cap;
             opacity: 0.5;
         }
 
@@ -272,73 +325,197 @@
             margin-inline-end: var(--_contraaast-space-m-2xl);
         }
 
+        /* modal dialog */
+        dialog {
+            border-style: dashed;
+            border-width: var(--_contraaast-space-s-xl);
+            border-left: none;
+            border-right: none;
+            box-shadow: var(--_contraaast-elevation-altitude);
+            color: currentColor;
+            max-inline-size: 125ch;
+            padding: var(--_contraaast-space-l-3xl);
+            text-align: left;
+        }
+
+        dialog p {
+            font-size: var(--_contraaast-fontSize-s);
+        }
+
+        dialog[open] {
+            animation: var(--_contraaast-motion-fadeIn);
+        }
+
+        dialog[open]::backdrop {
+            animation: var(--_contraaast-motion-backgroundFadeIn);
+        }
+
+        /* header */
+        h4 {
+            font-size: var(--_contraaast-fontSize-l);
+            --mono: "MONO" 0;
+            --casl: "CASL" .5;
+            --wght: "wght" 600;
+            --CRSV: "CRSV" 1;
+            font-variation-settings: var(--mono), var(--casl), var(--wght), var(--CRSV);
+            margin: 0;
+        }
+
+        /* controls */
+        .info,
+        .x {
+            border: none;
+            border-radius: 0;
+            padding: 0;
+        }
+
+        .info>svg,
+        .x>svg {
+            animation: none !important;
+            opacity: 1.0;
+        }
+
+        .info:active,
+        .info:focus,
+        .x:active,
+        .x:focus {
+            outline: none;
+        }
+
+        /* motion keyframes */
         @keyframes beat {
             50% {
                 transform: scale(1.1, 1.1)
             }
         }
 
-        @keyframes fade-in {
+        @keyframes fade-up {
             to {
                 opacity: 1.0
             }
         }
 
-        button:hover .icon {
-            animation: var(--_contraaast-animation-beat), var(--_contraaast-animation-fadeIn) forwards;
+        @keyframes fade-in {
+            0% {
+                opacity: 0;
+                display: none;
+            }
+
+            100% {
+                opacity: 1.0;
+                display: block;
+            }
         }
 
-        .* {
-            /* debugger */
+        @keyframes bg-fade-in {
+            0% {
+                background-color: rgba(0, 0, 0, 0.0);
+            }
+
+            100% {
+                background-color: rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        /* utils */
+        /* visually hidden, but not from screen readers: https://gist.github.com/Heydon/c8d46c0dd18ce96b5833b3b564e9f472 */
+        .vh {
+            clip-path: inset(100%) !important;
+            clip: rect(1px, 1px, 1px, 1px) !important;
+            height: 1px !important;
+            overflow: hidden !important;
+            position: absolute !important;
+            white-space: nowrap !important;
+            width: 1px !important;
+        }
+
+        /* debugger */
+        * {
             outline: currentColor dotted 0.5px;
         }
     </style>
+    <script>
+        !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.async = !0, p.src = s.api_host + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
+        posthog.init('phc_tKH0KtxZvzooXTPzvRCo59OddYgwAzU8vrXLcW0OV6Z', { api_host: 'https://app.posthog.com' })
+    </script>
 </head>
 
-<body class="center" onload="generateColors()">
+<body onload="generateColors()">
     <!-- layout -->
-    <header>
+    <header class="spread">
         <article>
             <a href="https://contraaast.timpish.com">
                 <h1><span>CONTR</span><i>AAA</i><span>ST</span></h1>
                 <em>High contrast color engine</em>
             </a>
         </article>
+        <article>
+            <button class="info">
+                <svg class="icon">
+                    <use href="#info"></use>
+                </svg>
+                <span class="vh">Info.</span>
+            </button>
+            <dialog id="dialog" class="rhythm-m">
+                <header class="spread">
+                    <h4>About</h4>
+                    <button class="x">
+                        <svg class="icon">
+                            <use href="#close"></use>
+                        </svg>
+                        <span class="vh">Close</span>
+                    </button>
+                </header>
+                <p>CONTRAAAST randomdly generates, inverts, and retrieves high contrast color-pairs compliant with <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-enhanced.html" target="_blank">Success Criterion 1.4.6</a>, <em>i.e.</em>, contrast ratio range: 7.0-21.0. Black on white, and its inverse, has a conrast ratio of 21.0.</p>
+                <p>Randomosity somewhat gamifies the <abbr title="User Experience">UX</abbr>, but also makes it potentially habit forming. Rendered results are subjectively beautiful, blas&eacute;, even unsightly. The current &ldquo;high score&rdquo; over thousands of automated runs is 18.6. 🤔</p>
+                <p>Typeset in <a href="https://www.recursive.design" target="_blank">Recursive</a> and <a href="https://phosphoricons.com" target="_blank">Phosphor</a>.</p>
+            </dialog>
+        </article>
     </header>
 
-    <p>Generate random color-pairs compliant with <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-enhanced.html" target="_blank">Success Criterion 1.4.6</a>, <em>i.e.</em>, the figure &harr; ground color contrast ratio is &#8805;7:1.</p>
-
-    <h2><input id="output" aria-label="output"></input>&equals;<span id="ratio"></span></h2>
+    <output>
+        <h2><input id="output" aria-label="output"></input></h2>
+        <h3 id="ratio"><span></span></h3>
+    </output>
 
     <button id="invert" class="with-icon">
         <svg class="icon">
             <use href="#swap"></use>
         </svg>
-        Invert
+        Swap
     </button>
 
     <button id="copy" class="with-icon">
         <svg class="icon">
             <use href="#get"></use>
         </svg>
-        Get
+        Copy
     </button>
 
-    <button id="run" class="with-icon" tabindex="0">
+    <button id="run" class="with-icon">
         <svg class="icon">
             <use href="#color"></use>
         </svg>
         Color Me
     </button>
 
-    <footer>
+    <footer class="spread">
         <p>&copy;
             <script>document.write((new Date).getFullYear())</script><noscript>2023</noscript> Timothy Martens
+        </p>
+        <p>
+            <a href="https://www.timpish.com">timpish.com</a>
         </p>
     </footer>
 
     <!-- icons -->
     <svg display="none" aria-hidden=”true” width="0" height="0" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <symbol id="close" viewBox="0 0 10 10" fill="currentColor">
+            <path d="M9.853 9.146a.5.5 0 0 1-.707.707L5 5.707.854 9.853a.5.5 0 1 1-.707-.707L4.293 5 .147.854A.5.5 0 1 1 .854.147L5 4.293 9.146.147a.5.5 0 1 1 .707.707L5.707 5z" />
+        </symbol>
+        <symbol id="info" viewBox="0 0 10 10" fill="currentColor">
+            <path d="M5 0a5 5 0 1 0 0 10A5 5 0 0 0 5 0zm0 9.23A4.23 4.23 0 1 1 5 .77a4.23 4.23 0 0 1 0 8.46zm.77-1.922a.385.385 0 0 1-.385.384.77.77 0 0 1-.77-.769V5a.385.385 0 1 1 0-.77.77.77 0 0 1 .77.77v1.923a.385.385 0 0 1 .384.385zM4.23 2.885a.577.577 0 1 1 1.155 0 .577.577 0 0 1-1.154 0z" />
+        </symbol>
         <symbol id="swap" viewBox="0 0 10 10" fill="currentColor">
             <path d="M10 .833V6.25a.833.833 0 0 1-.833.833H3.506l.539.539a.417.417 0 0 1-.59.59l-1.25-1.25a.417.417 0 0 1 0-.59l1.25-1.25a.417.417 0 0 1 .59.59l-.54.538h5.662V.833H3.333v.417a.417.417 0 1 1-.833 0V.833A.833.833 0 0 1 3.333 0h5.834A.833.833 0 0 1 10 .833zm-2.917 7.5a.417.417 0 0 0-.416.417v.417H.833V3.75h5.661l-.539.539a.417.417 0 1 0 .59.59l1.25-1.25a.417.417 0 0 0 0-.59l-1.25-1.25a.417.417 0 1 0-.59.59l.54.538H.832A.833.833 0 0 0 0 3.75v5.417A.833.833 0 0 0 .833 10h5.834a.833.833 0 0 0 .833-.833V8.75a.417.417 0 0 0-.417-.417z" />
         </symbol>
@@ -483,7 +660,7 @@
 
             // Update the output textarea with the switched values
             colorOutputEl.value = `${cc1}\u2236${cc2}`;
-            //colorOutputEl.value = `${cc1}\n${cc2}`;
+
         }
 
         // Copy the values of the output textarea to the clipboard
@@ -508,6 +685,18 @@
         invert.addEventListener("click", switchColors);
         copy.addEventListener("click", copyToClipboard);
         run.addEventListener("click", generateColors);
+
+        //Modal
+        const dialogEl = document.getElementById("dialog");
+        const showBtn = document.querySelector(".info");
+        const closeBtn = document.querySelector(".x");
+
+        showBtn.addEventListener("click", () => {
+            dialogEl.showModal();
+        });
+        closeBtn.addEventListener("click", () => {
+            dialogEl.close();
+        });
     </script>
 
 </body>

@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+<!--
+    mobile:
+    > margins
+    <output txt (2)
+    adjust grid frs??
+    button borders?
+    Xmodal text size (18/19)
+    Xlogo size
+    Xhide tag
+-->
 
 <head>
     <meta charset="UTF-8">
@@ -42,16 +52,17 @@
             --_contraaast-fontFamily-body: var(--contraaast-fontFamily-body, Recursive, Dank Mono, Operator Mono, Inconsolata, Fira Mono, Monaco, ui-monospace, SF Mono, Droid Sans Mono, Source Code Pro, monospace);
             font-family: var(--_contraaast-fontFamily-body);
 
-            --_contraaast-fontSize-xs: var(--contraaast-fontSize-xs, clamp(0.6688rem, 0.6008rem + 0.3398vw, 0.8875rem));
-            --_contraaast-fontSize-s: var(--contraaast-fontSize-s, clamp(1.125rem, 0.8143rem + 1.5534vw, 2.125rem));
-            --_contraaast-fontSize-m: var(--contraaast-fontSize-m, clamp(1.875rem, 1.6808rem + 0.9709vw, 2.5rem));
-            --_contraaast-fontSize-l: var(--contraaast-fontSize-l, clamp(1.5rem, 1.034rem + 2.3301vw, 3rem));
+            --_contraaast-fontSize-s: var(--contraaast-fontSize-s, clamp(0.75rem, 0.7112rem + 0.1942vw, 0.875rem));
+            --_contraaast-fontSize-m: var(--contraaast-fontSize-m, clamp(1.125rem, 0.8143rem + 1.5534vw, 2.125rem));
+            --_contraaast-fontSize-l: var(--contraaast-fontSize-l, clamp(1.5rem, 1.1893rem + 1.5534vw, 2.5rem));
             --_contraaast-fontSize-xl: var(--contraaast-fontSize-xl, clamp(2.0625rem, 1.0528rem + 5.0485vw, 5.3125rem));
             --_contraaast-fontSize-xxl: var(--contraaast-fontSize-xxl, clamp(9.0625rem, 4.4217rem + 23.2039vw, 24rem));
 
             --_contraaast-space-2xs-xl: var(--contraaast-space-2xs-xl, clamp(0.31rem, 0.018rem + 1.4602vw, 1.25rem));
             --_contraaast-space-xs-s: var(--contraaast-space-xs-s, clamp(0.45rem, 0.7121rem + -0.3107vw, 0.65rem));
             --_contraaast-space-s-xl: var(--contraaast-space-s-xl, clamp(0.65rem, 0.4636rem + 0.932vw, 1.25rem));
+            --_contraaast-space-s-l: var(--contraaast-space-s-l, clamp(0.65rem, 0.5413rem + 0.5437vw, 1rem));
+            --_contraaast-space-m-l: var(--contraaast-space-m-l, clamp(0.75rem, 0.6723rem + 0.3883vw, 1rem));
             --_contraaast-space-m-xl: var(--contraaast-space-m-xl, clamp(0.75rem, 0.5947rem + 0.7767vw, 1.25rem));
             --_contraaast-space-m-2xl: var(--contraaast-space-m-2xl, clamp(0.75rem, 0.517rem + 1.165vw, 1.5rem));
             --_contraaast-space-l-3xl: var(--contraaast-space-l-3xl, clamp(1rem, 0.6893rem + 1.5534vw, 2rem));
@@ -87,18 +98,25 @@
                 'invert copy'
                 'execute execute'
                 'footer footer';
-            grid-template-rows: min-content 2.0fr 0.5fr 1.0fr min-content;
+            grid-template-rows: min-content auto 1.0fr 1.5fr min-content;
             gap: var(--_contraaast-space-2xs-xl);
             line-height: 1.5;
             margin: 0;
             min-height: 100vh;
-            padding: var(--_contraaast-space-s-xl) var(--_contraaast-space-2xs-xl);
+            padding: var(--_contraaast-space-s-l) var(--_contraaast-space-s-xl);
         }
 
-        @media screen and (min-width: 450px) {
+        @media (max-width: 450px) {
             body {
-                grid-template-rows: min-content auto 1.0fr 1.5fr min-content;
+                grid-template-rows: min-content 1.5fr 0.5fr 1.0fr min-content;
+            }
 
+            h1 {
+                margin-bottom: 0 !important;
+            }
+
+            i {
+                display: none;
             }
         }
 
@@ -108,7 +126,6 @@
 
         output {
             grid-area: output;
-            align-self: center;
         }
 
         #invert {
@@ -130,7 +147,7 @@
         /* elements */
         /* logo/header layout, wrapper, and effects */
         h1 {
-            font-size: var(--_contraaast-fontSize-m);
+            font-size: var(--_contraaast-fontSize-l);
             --mono: "MONO" 1;
             --casl: "CASL" 1;
             --wght: "wght" 430;
@@ -148,8 +165,9 @@
             transition: opacity 0.27s var(--_contraaast-easing-easeInOut);
         }
 
-        h1+em {
-            font-size: var(--_contraaast-fontSize-xs);
+        h1+i {
+            font-size: var(--_contraaast-fontSize-s);
+            letter-spacing: .03ch;
             --mono: "MONO" 1;
             --wght: "wght" 600;
             font-variation-settings: var(--mono), var(--wght);
@@ -169,13 +187,13 @@
             opacity: 0.4;
         }
 
-        article h1 i {
+        article h1 b {
             font-style: normal;
             opacity: 0.4;
             transition: opacity 0.27s var(--_contraaast-easing-easeInOut);
         }
 
-        article:hover h1 i {
+        article:hover h1 b {
             opacity: 1.0;
         }
 
@@ -183,6 +201,7 @@
 
         /* output */
         output {
+            align-self: center;
             text-align: center;
         }
 
@@ -195,8 +214,12 @@
             padding: 0;
         }
 
-        input:active,
+        /* input:active,
         input:focus {
+            outline-offset: -0.3rem;
+        } */
+
+        input:is(:active, :focus) {
             outline-offset: -0.3rem;
         }
 
@@ -235,21 +258,18 @@
             animation: var(--_contraaast-motion-beat), var(--_contraaast-motion-fadeUp) forwards;
         }
 
-        button:active,
-        button:focus,
-        input:active,
-        input:focus {
+        input:is(:active, :focus),
+        button:is(:active, :focus) {
             outline: currentColor dotted 0.30rem;
         }
 
-        button:active,
-        button:focus {
+        button:is(:active, :focus) {
             outline-offset: -0.80rem;
         }
 
-
         footer p {
-            font-size: var(--_contraaast-fontSize-xs);
+            font-size: var(--_contraaast-fontSize-s);
+            margin-bottom: 0;
         }
 
         abbr {
@@ -276,7 +296,6 @@
             justify-content: space-between;
             align-items: center;
         }
-
 
         .rhythm {
             display: flex;
@@ -325,7 +344,7 @@
         }
 
         dialog p {
-            font-size: var(--_contraaast-fontSize-s);
+            font-size: var(--_contraaast-fontSize-m);
         }
 
         dialog[open] {
@@ -361,10 +380,8 @@
             opacity: 1.0;
         }
 
-        .info:active,
-        .info:focus,
-        .x:active,
-        .x:focus {
+        .info:is(:active, :focus),
+        .x:is(:active, :focus) {
             outline: none;
         }
 
@@ -395,11 +412,11 @@
 
         @keyframes bg-fade-in {
             0% {
-                background-color: rgba(0, 0, 0, 0.0);
+                background-color: rgba(0 0 0 / 0.0);
             }
 
             100% {
-                background-color: rgba(0, 0, 0, 0.5);
+                background-color: rgba(0 0 0 / 0.5);
             }
         }
 
@@ -416,14 +433,14 @@
         }
 
         /* debugger */
-        .* {
+        * {
             outline: currentColor dotted 0.5px;
         }
     </style>
-    <script>
+    <!-- <script>
         !function (t, e) { var o, n, p, r; e.__SV || (window.posthog = e, e._i = [], e.init = function (i, s, a) { function g(t, e) { var o = e.split("."); 2 == o.length && (t = t[o[0]], e = o[1]), t[e] = function () { t.push([e].concat(Array.prototype.slice.call(arguments, 0))) } } (p = t.createElement("script")).type = "text/javascript", p.async = !0, p.src = s.api_host + "/static/array.js", (r = t.getElementsByTagName("script")[0]).parentNode.insertBefore(p, r); var u = e; for (void 0 !== a ? u = e[a] = [] : a = "posthog", u.people = u.people || [], u.toString = function (t) { var e = "posthog"; return "posthog" !== a && (e += "." + a), t || (e += " (stub)"), e }, u.people.toString = function () { return u.toString(1) + ".people (stub)" }, o = "capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys onSessionId".split(" "), n = 0; n < o.length; n++)g(u, o[n]); e._i.push([i, s, a]) }, e.__SV = 1) }(document, window.posthog || []);
         posthog.init('phc_tKH0KtxZvzooXTPzvRCo59OddYgwAzU8vrXLcW0OV6Z', { api_host: 'https://app.posthog.com' })
-    </script>
+    </script> -->
 </head>
 
 <body onload="generateColors()">
@@ -431,8 +448,8 @@
     <header class="spread">
         <article>
             <a href="https://contraaast.timpish.com">
-                <h1><span>CONTR</span><i>AAA</i><span>ST</span></h1>
-                <em>High contrast color engine</em>
+                <h1><span>CONTR</span><b>AAA</b><span>ST</span></h1>
+                <i>High contrast color engine</i>
             </a>
         </article>
         <article>
@@ -440,7 +457,7 @@
                 <svg class="icon">
                     <use href="#info"></use>
                 </svg>
-                <span class="vh">Info.</span>
+                <span class="vh">Info</span>
             </button>
             <dialog id="dialog" class="rhythm-m">
                 <header class="spread">
@@ -452,8 +469,8 @@
                         <span class="vh">Close</span>
                     </button>
                 </header>
-                <p>CONTRAAAST randomdly generates, inverts, and retrieves high contrast color-pairs compliant with <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-enhanced.html" target="_blank">Success Criterion 1.4.6</a>, <em>i.e.</em>, contrast ratio range: 7.0-21.0. Black on white, and its inverse, has a conrast ratio of 21.0.</p>
-                <p>Randomosity somewhat gamifies the <abbr title="User Experience">UX</abbr>, but also makes it potentially habit forming. Rendered results are subjectively beautiful, blas&eacute;, even unsightly. The current &ldquo;high score&rdquo; over thousands of automated runs is 18.6. 🤔</p>
+                <p>CONTRAAAST randomdly generates, inverts, and retrieves high contrast color-pairs compliant with <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-enhanced.html" target="_blank">Success Criterion 1.4.6</a>, <em>i.e.</em>, contrast ratio range: 7.0-21.0. Black on white has a conrast ratio of 21.0.</p>
+                <p>Randomness gamifies the <abbr title="User Experience">UX</abbr> but makes it habit forming. Rendered output can be beautiful, blas&eacute;, even unsightly. The &ldquo;high score&rdquo; over thousands of automated runs is 18.6. 🤔</p>
                 <p>Typeset in <a href="https://www.recursive.design" target="_blank">Recursive</a> and <a href="https://phosphoricons.com" target="_blank">Phosphor</a>.</p>
             </dialog>
         </article>

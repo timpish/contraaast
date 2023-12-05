@@ -79,6 +79,8 @@
 
         /* layout */
         body {
+            color: #000;
+            background-color: #fff;
             border-top: var(--_contraaast-space-s-xl) dashed currentColor;
             border-bottom: var(--_contraaast-space-s-xl) dashed currentColor;
             display: grid;
@@ -161,6 +163,7 @@
             --mono: "MONO" 1;
             --wght: "wght" 600;
             font-variation-settings: var(--mono), var(--wght);
+            animation: var(--_contraaast-motion-fadeUp);
         }
 
         header>article {
@@ -204,13 +207,9 @@
             padding: 0;
         }
 
-        /* input:active,
-        input:focus {
-            outline-offset: -0.3rem;
-        } */
-
         input:is(:active, :focus) {
-            outline-offset: -0.3rem;
+            outline-offset: -0.30rem;
+            /* box-shadow: currentColor .25rem; */
         }
 
         /* colors output */
@@ -255,6 +254,7 @@
 
         button:is(:active, :focus) {
             outline-offset: -0.80rem;
+            /* box-shadow: currentColor .25rem; */
         }
 
         footer p {
@@ -263,7 +263,8 @@
         }
 
         abbr {
-            --wght: "wght" 550;
+            --wght: "wght" 560;
+            font-size: 1.08em;
             font-variation-settings: var(--wght);
             font-variant-caps: all-small-caps;
             letter-spacing: 0.02em;
@@ -298,8 +299,7 @@
         }
 
         .rhythm-m>*+* {
-            margin-block-start: var(--_cv-space-xl);
-            margin-block-start: 1.0rem;
+            margin-block-start: var(--_contraaast-space-s-l);
         }
 
         .icon {
@@ -345,7 +345,7 @@
             animation: var(--_contraaast-motion-backgroundFadeIn);
         }
 
-        /* header */
+        /* dialog header */
         h4 {
             font-size: var(--_contraaast-fontSize-l);
             --mono: "MONO" 0;
@@ -449,21 +449,21 @@
                 </svg>
                 <span class="vh">Info</span>
             </button>
-            <dialog id="dialog" class="rhythm-m">
-                <header class="spread">
-                    <h4>About CONTRAAAST</h4>
-                    <button class="x">
-                        <svg class="icon">
-                            <use href="#close"></use>
-                        </svg>
-                        <span class="vh">Close</span>
-                    </button>
-                </header>
-                <p>Randomdly generate, invert, and retrieve high contrast color-pairs compliant with <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-enhanced.html" target="_blank">Success Criterion 1.4.6</a>, <em>i.e.</em>, contrast ratio &ge; 7.0-21.0. Black on white has a conrast ratio of 21.0.</p>
-                <p>Randomness gamifies the <abbr title="User Experience">UX</abbr> but makes it habit forming. Rendered output can be beautiful, blas&eacute;, even unsightly. The &ldquo;high score&rdquo; over thousands of automated runs is 18.6.</p>
-                <p>Typeset in the variable font, <a href="https://www.recursive.design" target="_blank">Recursive</a> with <a href="https://phosphoricons.com" target="_blank">Phosphor</a> icons.</p>
-            </dialog>
         </article>
+        <dialog id="dialog" role="status" aria-live="polite" class="rhythm-m">
+            <header class="spread">
+                <h4>About</h4>
+                <button class="x">
+                    <svg class="icon">
+                        <use href="#close"></use>
+                    </svg>
+                    <span class="vh">Close</span>
+                </button>
+            </header>
+            <p>CONTRAAAST randomdly generates, inverts, and retrieves high contrast color-pairs compliant with <abbr title="Web Content Accessibility Guidelines">WCAG</abbr> <a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-enhanced.html" target="_blank">Success Criterion 1.4.6</a>, <em>i.e.</em>, contrast ratio &ge; 7.0-21.0. Black and white have a conrast ratio of 21.0.</p>
+            <p>Randomness gamifies the <abbr title="User Experience">UX</abbr> but makes it habit forming. Rendered output can be beautiful, blas&eacute;, even unsightly. The &ldquo;high score&rdquo; over thousands of automated runs is 18.6.</p>
+            <p>Typeset in the variable font, <a href="https://www.recursive.design" target="_blank">Recursive</a> with <a href="https://phosphoricons.com" target="_blank">Phosphor</a> icons.</p>
+        </dialog>
     </header>
 
     <output>

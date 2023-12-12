@@ -283,7 +283,7 @@
         .spread {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
+            gap: .25rem;
             justify-content: space-between;
             align-items: center;
         }
@@ -300,6 +300,10 @@
 
         .rhythm-m>*+* {
             margin-block-start: var(--_contraaast-space-s-l);
+        }
+
+        .rhythm-0>*+* {
+            margin-block-start: 0;
         }
 
         .icon {
@@ -492,10 +496,8 @@
         Color Me
     </button>
 
-    <footer class="spread">
-        <p>&copy;
-            <!-- <script>document.write((new Date).getFullYear())</script><noscript>2023</noscript> Timothy Martens -->
-            2023 Timothy Martens
+    <footer class="spread rhythm-0">
+        <p>&copy;&nbsp;&apos;23 Timothy Martens
         </p>
         <p>
             <a href="https://contraaast.timpish.com">contraaast</a>.<a href="https://www.timpish.com">timpish.com</a>

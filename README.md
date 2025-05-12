@@ -1,2 +1,2 @@
 # CONTRAAAST
-Color Contrast Confabulator…WCAG AAA color-pair generator
+Color Contrast Confabulator…a little too fun WCAG AAA color-pair generator
